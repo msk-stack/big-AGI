@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://bigagi.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_7b4e819e2cf84e45bd3b1d80feabe76a }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_95229222f8c44e4e9385244804d3da23 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_5dc036411bb3497c9a2c553c974f8db5 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_9705bbdd9dc5463f933fbbfaf7779e8c }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: bigagi.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_7b4e819e2cf84e45bd3b1d80feabe76a }}/chatmanas.azurecr.io/webimage:${{ github.sha }}
+        tags: bigagi.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_5dc036411bb3497c9a2c553c974f8db5 }}/chatmanas.azurecr.io/webimage:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'manasgpt'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_57a3c816c89d416a8dac093d63a6a59e }}
-        images: 'bigagi.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_7b4e819e2cf84e45bd3b1d80feabe76a }}/chatmanas.azurecr.io/webimage:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_a23ba022ee0245e4890fa3d31aebbaec }}
+        images: 'bigagi.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_5dc036411bb3497c9a2c553c974f8db5 }}/chatmanas.azurecr.io/webimage:${{ github.sha }}'
